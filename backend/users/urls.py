@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import UserList, UserProfile
-
+# from .views import UserList, UserProfile
+from . import views
 urlpatterns = [
-    path('<int:pk>/', UserProfile.as_view()),
-    path('', UserList.as_view())
+    path('', views.user_list),
+    path('<int:pk>/', views.user_detail),
+    path('new/', views.user_create),
+    path('edit/<int:pk>', views.user_edit),
 ]
