@@ -6,13 +6,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserCreateSerializer, UserDetailSerializer
 
 
 @api_view(['GET'])
 def user_list(request):
     users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
+    serializer = UserDetailSerializer(users, many=True)
 
     return Response(data=serializer.data)
 
@@ -20,14 +20,14 @@ def user_list(request):
 @api_view(['GET'])
 def user_detail(request, pk):
     user = get_object_or_404(get_user_model(), pk=pk)
-    serializer = UserSerializer(user, many=False)
+    serializer = UserDetailSerializer(user, many=False)
 
     return Response(data=serializer.data)
 
 
 @api_view(['GET', 'POST'])
 def user_create(request):
-    new_user_serializer = UserSerializer(
+    new_user_serializer = UserCreateSerializer(
         data=request.data
     )
 
@@ -44,7 +44,7 @@ def user_edit(request, pk):
 
     if request.method == 'GET':
         user = get_object_or_404(get_user_model(), pk=pk)
-        serializer = UserSerializer(user, many=False)
+        serializer = UserCreateSerializer(user, many=False)
 
         return Response(data=serializer.data)
 

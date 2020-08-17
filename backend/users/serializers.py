@@ -2,12 +2,9 @@ from rest_framework import serializers
 from .models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
-
-        print('SERIALIZER CREATE: ', validated_data)
-
         password = validated_data.get('password', None)
         instance = self.Meta.model(**validated_data)
         if password is not None:
@@ -28,3 +25,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']

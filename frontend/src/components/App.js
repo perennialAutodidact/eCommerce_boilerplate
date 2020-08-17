@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import "../../node_modules/normalize.css";
 import Navbar from "./layout/Navbar";
+import UserList from "../components/users/UserList";
 
 class App extends Component {
   constructor() {
@@ -9,6 +12,14 @@ class App extends Component {
       showLoginForm: false,
     };
   }
+
+  componentDidMount() {
+    axios.get("http://localhost:8000/api/v1/users/").then((response) => {
+      console.log("response", response);
+    });
+  }
+
+  loginUser = (username, password) => {};
 
   toggleLoginForm = () => {
     this.setState({
@@ -23,6 +34,8 @@ class App extends Component {
           showLoginForm={this.state.showLoginForm}
           toggleLoginForm={this.toggleLoginForm}
         />
+
+        <UserList />
       </div>
     );
   }
