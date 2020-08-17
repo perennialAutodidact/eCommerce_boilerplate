@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import { HashRouter, Switch, Route } from "react-router-dom";
 import "../../node_modules/normalize.css";
 import Navbar from "./layout/Navbar";
 import UserList from "../components/users/UserList";
@@ -10,12 +10,15 @@ class App extends Component {
     super();
     this.state = {
       showLoginForm: false,
+      users: [],
     };
   }
 
   componentDidMount() {
     axios.get("http://localhost:8000/api/v1/users/").then((response) => {
-      console.log("response", response);
+      this.setState({
+        users: response.data,
+      });
     });
   }
 
@@ -34,8 +37,15 @@ class App extends Component {
           showLoginForm={this.state.showLoginForm}
           toggleLoginForm={this.toggleLoginForm}
         />
-
-        <UserList />
+        <div className="content">
+          <HashRouter>
+            <Switch>
+              <Route exact path="/">
+                <UserList users={this.state.users} />
+              </Route>
+            </Switch>
+          </HashRouter>
+        </div>
       </div>
     );
   }
