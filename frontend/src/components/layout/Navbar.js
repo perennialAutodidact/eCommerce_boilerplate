@@ -8,7 +8,13 @@ class Navbar extends Component {
         <ul className="nav-links">
           <li className="nav-link">Home</li>
         </ul>
-        <NavLogin />
+        {this.props.showLoginForm ? (
+          <NavLogin toggleLoginForm={this.props.toggleLoginForm} />
+        ) : (
+          <div className="loginFormToggle" onClick={this.props.toggleLoginForm}>
+            Log In
+          </div>
+        )}
       </div>
     );
   }
