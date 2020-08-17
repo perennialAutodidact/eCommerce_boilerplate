@@ -8,8 +8,10 @@ class Navbar extends Component {
       <div className="navbar">
         <BrowserRouter>
           <ul className="nav-links">
-            <li className="nav-link">
-              <Link to="/">Home</Link>
+            <li>
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
             </li>
           </ul>
           {this.props.showLoginForm ? (
