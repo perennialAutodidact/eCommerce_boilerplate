@@ -32,7 +32,7 @@ class Navbar extends Component {
             </ul>
             <div className="dropleft text-light">
               <div
-                className="dropdown-toggle"
+                className="dropdown-toggle h5"
                 href="#"
                 id="navbarDropdown"
                 role="button"

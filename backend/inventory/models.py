@@ -18,6 +18,8 @@ VOLUME_UNITS = [
 
 
 class Category(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+
     def __str__(self):
         return self.title
 
@@ -38,7 +40,8 @@ class Product(models.Model):
         default=0.0, max_digits=6, decimal_places=2)
     volume_unit = models.CharField(
         max_length=5, choices=VOLUME_UNITS)
-    category = models.ManyToManyField(Category, related_name='category')
+
+    categories = models.ManyToManyField(Category, related_name='categories')
 
     def get_volume(self):
         return f'{self.volume_amount}{self.volume_unit}'

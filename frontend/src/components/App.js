@@ -8,7 +8,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      showLoginForm: false,
       users: [],
     };
   }
@@ -23,19 +22,10 @@ class App extends Component {
 
   loginUser = (username, password) => {};
 
-  toggleLoginForm = () => {
-    this.setState({
-      showLoginForm: !this.state.showLoginForm,
-    });
-  };
-
   render() {
     return (
       <div className="App">
-        <Navbar
-          showLoginForm={this.state.showLoginForm}
-          toggleLoginForm={this.toggleLoginForm}
-        />
+        <Navbar />
         <div className="container-fluid">
           <div className="content">
             <HashRouter>
