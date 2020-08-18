@@ -24,26 +24,20 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(
-        max_length=100,
-        required=True,
-    )
+        max_length=100, blank=False)
     description = models.TextField(
-        max_length=10000,
-        required=True
-    )
-    price_per = models.IntegerField(required=True)
-    cost_per = models.IntegerField(required=True)
+        max_length=10000, blank=False)
+    price_per = models.IntegerField(default=0.0, blank=False)
+    cost_per = models.IntegerField(default=0.0, blank=False)
     in_stock = models.IntegerField(default=0)
-    weight_amount = models.DecimalField(default=0.0)
+    weight_amount = models.DecimalField(
+        default=0.0, max_digits=6, decimal_places=2)
     weight_unit = models.CharField(
-        max_length=2,
-        choices=SIZE_UNITS,
-    )
-    volume_amount = models.DecimalField(default=0.0)
+        max_length=2, choices=WEIGHT_UNITS)
+    volume_amount = models.DecimalField(
+        default=0.0, max_digits=6, decimal_places=2)
     volume_unit = models.CharField(
-        max_length=5,
-        choices=SIZE_UNITS,
-    )
+        max_length=5, choices=VOLUME_UNITS)
     category = models.ManyToManyField(Category, related_name='category')
 
     def get_volume(self):
