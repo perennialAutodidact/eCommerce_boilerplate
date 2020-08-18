@@ -5,27 +5,53 @@ import { Link, BrowserRouter } from "react-router-dom";
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar">
-        <BrowserRouter>
-          <ul className="nav-links">
-            <li>
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-          </ul>
-          {this.props.showLoginForm ? (
-            <NavLogin toggleLoginForm={this.props.toggleLoginForm} />
-          ) : (
-            <div
-              className="loginFormToggle"
-              onClick={this.props.toggleLoginForm}
-            >
-              Log In
+      <BrowserRouter>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a className="navbar-brand" href="#">
+            Money for Stuff
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="#">
+                  Home <span className="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+            <div className="dropleft text-light">
+              <div
+                className="dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Account
+              </div>
+              <div
+                className="dropdown-menu p-2"
+                aria-labelledby="navbarDropdown"
+              >
+                <NavLogin />
+              </div>
             </div>
-          )}
-        </BrowserRouter>
-      </div>
+          </div>
+        </nav>
+      </BrowserRouter>
     );
   }
 }

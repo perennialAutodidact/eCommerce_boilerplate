@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import "../../node_modules/normalize.css";
 import Navbar from "./layout/Navbar";
 import UserList from "../components/users/UserList";
 
@@ -37,14 +36,16 @@ class App extends Component {
           showLoginForm={this.state.showLoginForm}
           toggleLoginForm={this.toggleLoginForm}
         />
-        <div className="content">
-          <HashRouter>
-            <Switch>
-              <Route exact path="/">
-                <UserList users={this.state.users} />
-              </Route>
-            </Switch>
-          </HashRouter>
+        <div className="container-fluid">
+          <div className="content">
+            <HashRouter>
+              <Switch>
+                <Route exact path="/">
+                  <UserList users={this.state.users} />
+                </Route>
+              </Switch>
+            </HashRouter>
+          </div>
         </div>
       </div>
     );

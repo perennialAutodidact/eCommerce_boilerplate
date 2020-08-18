@@ -5,9 +5,11 @@ const UserList = (props) => {
     <div>
       <h2>Users</h2>
       <div className="user-list">
-        {props.users.map((user) => (
-          <p>{user.username}</p>
-        ))}
+        <div className="row">
+          {props.users.map((user) => (
+            <div className="col col-4">{user.username}</div>
+          ))}
+        </div>
       </div>
     </div>
   );
