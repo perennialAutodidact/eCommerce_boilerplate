@@ -20,8 +20,11 @@ VOLUME_UNITS = [
 class Category(models.Model):
     name = models.CharField(max_length=100, blank=False)
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Product(models.Model):
@@ -29,19 +32,20 @@ class Product(models.Model):
         max_length=100, blank=False)
     description = models.TextField(
         max_length=10000, blank=False)
-    price_per = models.IntegerField(default=0.0, blank=False)
-    cost_per = models.IntegerField(default=0.0, blank=False)
+    price_per = models.IntegerField(default=0, blank=False)
+    cost_per = models.IntegerField(default=0, blank=False)
     in_stock = models.IntegerField(default=0)
     weight_amount = models.DecimalField(
         default=0.0, max_digits=6, decimal_places=2)
     weight_unit = models.CharField(
-        max_length=2, choices=WEIGHT_UNITS)
+        max_length=2, choices=WEIGHT_UNITS, default='na')
     volume_amount = models.DecimalField(
         default=0.0, max_digits=6, decimal_places=2)
     volume_unit = models.CharField(
-        max_length=5, choices=VOLUME_UNITS)
+        max_length=5, choices=VOLUME_UNITS, default='na')
+    image = models.URLField(default='')
 
-    categories = models.ManyToManyField(Category, related_name='categories')
+    categories = models.ManyToManyField(Category, related_name='products')
 
     def get_volume(self):
         return f'{self.volume_amount}{self.volume_unit}'

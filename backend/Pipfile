@@ -11,6 +11,8 @@ django = "*"
 django-rest-framework = "*"
 autopep8 = "*"
 django-cors-headers = "*"
+faker = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"
