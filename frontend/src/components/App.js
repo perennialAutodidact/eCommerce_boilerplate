@@ -3,6 +3,7 @@ import axios from 'axios';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './layout/Navbar';
 import UserList from '../components/users/UserList';
+import ProductList from './inventory/ProductList';
 
 class App extends Component {
   constructor() {
@@ -49,7 +50,8 @@ class App extends Component {
             <HashRouter>
               <Switch>
                 <Route exact path='/'>
-                  <UserList users={this.state.users} />
+                  <ProductList products={this.state.products}/>
+                  {/* <UserList users={this.state.users} /> */}
                 </Route>
               </Switch>
             </HashRouter>
