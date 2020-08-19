@@ -8,9 +8,9 @@ from random import random, choice
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        json_file = settings.BASE_DIR / 'inventory' / \
-            'management'/'commands' / 'products.json'
-        with open(json_file, 'r') as json_data:
+        json_file = settings.BASE_DIR/'inventory'/ \
+            'management'/'commands'/'products.json'
+        with open(json_file, 'r', encoding='utf-8') as json_data:
             products = json.loads(json_data.read())
 
         for product in products:
