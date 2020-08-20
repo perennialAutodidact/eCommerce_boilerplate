@@ -7,7 +7,7 @@ export class ProductList extends Component {
             <div>
                 <div className="row">
                     {this.props.products.map(product => (
-                        <div className="col col-4">
+                        <div className="col col-12 col-lg-4">
                             <ProductCard product={product}/>
                         </div>
                     ))}

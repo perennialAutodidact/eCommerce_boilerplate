@@ -30,7 +30,7 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <div className="dropleft text-light">
+            <div className="dropdown text-light">
               <div
                 className="dropdown-toggle h5"
                 href="#"
