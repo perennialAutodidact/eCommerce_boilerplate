@@ -8,6 +8,7 @@ import 'bootstrap/dist/js/bootstrap';
 import Popper from 'popper.js';
 import $ from 'jquery';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
