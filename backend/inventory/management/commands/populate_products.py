@@ -8,6 +8,9 @@ from random import random, choice
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+
+        Product.objects.all().delete()
+
         json_file = settings.BASE_DIR/'inventory'/ \
             'management'/'commands'/'products.json'
         with open(json_file, 'r', encoding='utf-8') as json_data:
@@ -19,8 +22,8 @@ class Command(BaseCommand):
             new_product = Product.objects.create(
                 title=product['title'],
                 description=product['description'],
-                price_per=product['price'],
-                cost_per=product['price'] * .4,
+                price_per=product['price'] * 100,
+                cost_per=product['price'] * 100 * .4,
                 weight_amount=round(random() * 10, 2),
                 weight_unit=choice(WEIGHT_UNITS),
                 image=product['image'],
