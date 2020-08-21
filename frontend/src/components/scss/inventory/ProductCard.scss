@@ -7,8 +7,8 @@
     }
 
     img {
-        height: 50%;
-        width: 50%;
+        height: 40%;
+        width: 40%;
     }
 
     &:hover {
@@ -22,10 +22,12 @@
         box-shadow: 0 0 5px #000;
         font-size: 2em;
         height:2.5em;
+        transition: all .3s ease-in-out;
         width: 2.5em;
 
         &:hover {
             cursor: pointer;
+            transform: scale(1.1);
         }
     }
 }
