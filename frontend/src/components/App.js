@@ -4,8 +4,11 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './layout/Navbar';
 import UserList from '../components/users/UserList';
 import ProductList from './inventory/ProductList';
-
+import '../../node_modules/bootstrap/dist/js/bootstrap';
+import $ from 'jquery';
 class App extends Component {
+
+
   constructor() {
     super();
     this.state = {
@@ -37,6 +40,10 @@ class App extends Component {
           categories: response.data,
         });
       });
+
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
   }
 
   loginUser = (username, password) => {};

@@ -25,7 +25,7 @@ export default function ProductCard(props) {
             justify-content-center"
             data-toggle="tooltip"
             data-placement="left"
-            title="Tooltip on left"
+            title="Add to cart"
           >
             <MdAddShoppingCart />
           </div>
