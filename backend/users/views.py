@@ -32,7 +32,11 @@ def user_create(request):
     )
 
     if new_user_serializer.is_valid():
-        new_user_serializer.save()
+        
+        # new_user = new_user_serializer.save()
+
+        # Token.objects.create(user=new_user)
+
         return Response(new_user_serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(new_user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

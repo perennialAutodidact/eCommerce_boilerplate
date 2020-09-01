@@ -13,6 +13,8 @@ autopep8 = "*"
 django-cors-headers = "*"
 faker = "*"
 requests = "*"
+django-rest-auth = {extras = ["with-social"],version = "*"}
+python-decouple = "*"
 
 [requires]
 python_version = "3.8"
