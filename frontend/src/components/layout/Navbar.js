@@ -43,7 +43,7 @@ class Navbar extends Component {
                 Account
               </div>
               <div
-                className="dropdown-menu p-2"
+                className="dropdown-menu dropdown-menu-right p-2"
                 aria-labelledby="navbarDropdown"
               >
                 <NavLogin />

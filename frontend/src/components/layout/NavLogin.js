@@ -1,46 +1,63 @@
-import React, { Component } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-class NavLogin extends Component {
-  render() {
-    return (
-      <div>
-        <form className="">
-          <div className="form-group">
-            <input
-              className="form-control-lg"
-              type="text"
-              name="username"
-              placeholder="Username"
-            />
-          </div>
+import UserContext from "../../context/users/userContext";
 
-          <div className="form-group">
-            <input
-              className="form-control-lg"
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-          </div>
+const NavLogin = () => {
+  const userContext = useContext(UserContext);
 
-          <div className="form-group">
-            <input
-              className="form-control btn btn-sm btn-dark mx-auto"
-              type="submit"
-              value="Log In"
-            />
-          </div>
-        </form>
-        <div className="text-center" href="#">
-          New around here? <Link to="/signup">Sign Up</Link>
+    const [text, setText] = useState({
+        email:'',
+        password:''
+    })
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        const email = e.target[0].value
+        const password = e.target[1].value
+
+        userContext.loginUser(email, password)
+    }
+
+  return (
+    <div>
+      <form className="" onSubmit={onSubmit}>
+        <div className="form-group">
+          <input
+            className="form-control-lg"
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
         </div>
-        <div className="text-center" href="#">
-          Forgot password? <Link>Reset</Link>
+
+        <div className="form-group">
+          <input
+            className="form-control-lg"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
         </div>
+
+        <div className="form-group">
+          <input
+            className="form-control btn btn-sm btn-dark mx-auto"
+            type="submit"
+            value="Log In"
+
+          />
+        </div>
+      </form>
+      <div className="text-center" href="#">
+        New around here? <Link to="/signup">Sign Up</Link>
       </div>
-    );
-  }
-}
+      <div className="text-center" href="#">
+        Forgot password? <Link to="#">Reset</Link>
+      </div>
+    </div>
+  );
+};
 
 export default NavLogin;
