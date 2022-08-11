@@ -11,19 +11,24 @@ const UserState = (props) => {
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const getCSRFToken = () => {
-    axios.get("http://localhost:8000/csrf_token/").then((response) => {
-      console.log(response.data);
+  // get users
+  const getUsers = async () => {
+    axios.get("http://localhost:8000/api/v1/users/").then((response) => {
+      dispatch({
+        type: GET_USERS,
+        payload: response.users,
+      });
     });
   };
 
+  
   const loginUser = (email, password) => {
     const data = {
       email: email,
       password: password,
     };
     const headers = {
-    //   "X-CSRFToken": Cookies.get("csrftoken"),
+      //   "X-CSRFToken": Cookies.get("csrftoken"),
     };
 
     const url = "http://localhost:8000/login/";
